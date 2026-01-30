@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# ML models
+*.h5
+*.tflite
+*.pkl
+
+# Logs & datasets
+*.csv
+
+# Arduino / ESP32
+*.bin
+*.elf
+*.hex
+
+# OS junk
+.DS_Store
+Thumbs.db

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Adaptive Lighting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <h1>Smart Adaptive Lighting — Control Center</h1>
+
+  <!-- ================= LIVE STATS ================= -->
+  <div class="grid">
+    <div class="card"><h3>Live Lux</h3><h1 id="lux">--</h1></div>
+    <div class="card"><h3>Hour</h3><h1 id="hour">--</h1></div>
+    <div class="card"><h3>Brightness (%)</h3><h1 id="brightness">--</h1></div>
+    <div class="card"><h3>Mode</h3><h1 id="mode">Auto</h1></div>
+  </div>
+
+  <!-- ================= MANUAL CONTROL ================= -->
+  <div class="card slider-box">
+    <h3>Manual Brightness Override</h3>
+
+    <input type="range" id="brightnessSlider" min="0" max="90" value="45">
+    <p>Selected: <span id="sliderValue">45</span>%</p>
+
+    <button onclick="manualMode()">Manual Mode</button>
+    <button onclick="autoMode()">Switch to AI Mode</button>
+
+    <!-- 🔥 POWER TOGGLE -->
+    <div style="margin-top:20px;">
+      <label class="switch">
+        <input type="checkbox" id="powerToggle" checked onchange="togglePower()">
+        <span class="slider round"></span>
+      </label>
+      <p style="margin-top:10px;">Light Power</p>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- ================= BRIGHTNESS CHART ================= -->
+  <div class="card">
+    <h3>Brightness Trend</h3>
+    <canvas id="chart"></canvas>
+  </div>
+
+  <br>
+
+  <!-- ================= POWER COMPARISON CHART ================= -->
+  <div class="card">
+    <h3>Power Consumption Comparison</h3>
+    <canvas id="powerChart"></canvas>
+  </div>
+
+  <br>
+
+  <!-- 🔥 ================= ENERGY COMPARISON CHART (ADDED) ================= -->
+  <div class="card">
+    <h3>Energy Consumption Comparison</h3>
+    <canvas id="energyChart"></canvas>
+  </div>
+
+  <br>
+
+  <!-- ================= ENERGY SUMMARY ================= -->
+  <!-- <div class="grid">
+    <div class="card">
+      <h3>Smart System Energy</h3>
+      <h1 id="smartEnergy">0.00</h1>
+      <p>Wh</p>
+    </div>
+
+    <div class="card">
+      <h3>Fixed LED Energy</h3>
+      <h1 id="fixedEnergy">0.00</h1>
+      <p>Wh</p>
+    </div>
+
+    <div class="card">
+      <h3>Energy Saved</h3>
+      <h1 id="energySaved">0.00</h1>
+      <p>Wh</p>
+    </div>
+  </div> -->
+
+</div>
+
+<script src="/static/dashboard.js"></script>
+</body>
+</html>
